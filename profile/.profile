@@ -45,3 +45,7 @@ if [ -d "$HOME/.pyenv/bin" ]; then
 fi
 
 # export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src/"
+
+if [ -f "$HOME/.cargo/env" ]; then
+    source "$HOME/.cargo/env"
+fi
