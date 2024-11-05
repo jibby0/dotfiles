@@ -20,6 +20,9 @@ then
     antigen bundle pip
     antigen bundle lein
     antigen bundle command-not-found
+    export NVM_LAZY_LOAD=true
+    antigen bundle lukechilds/zsh-nvm
+
 
     # Syntax highlighting bundle.
     antigen bundle zsh-users/zsh-syntax-highlighting
@@ -27,7 +30,7 @@ then
     antigen bundle zsh-users/zsh-autosuggestions
 
     # Load the theme.
-    antigen theme bureau
+    antigen theme simple
 
     # Tell antigen that you're done.
     antigen apply
@@ -80,11 +83,11 @@ function cd {
 function sl_func() {
     # sl - prints a mirror image of ls. (C) 2017 Tobias Girstmair, https://gir.st/, GPLv3
     #
-    LEN=$(ls "$@" |wc -L) # get the length of the longest line
+    LEN=$(ls "$@" |sort -nr|head -1|wc -c) # get the length of the longest line
 
     ls "$@" | rev | while read -r line
     do
-      printf "%${LEN}.${LEN}s\\n" "$line" | sed 's/^\(\s\+\)\(\S\+\)/\2\1/'
+      builtin printf "%${LEN}.${LEN}s\\n" "$line" | sed 's/^\(\s\+\)\(\S\+\)/\2\1/'
       done
 
 }

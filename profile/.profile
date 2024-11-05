@@ -19,7 +19,9 @@ fi
 alias ls='ls --color=auto'
 
 # Custom ls colors
-eval $(dircolors ~/.dircolors)
+if command -v dircolors 2>&1 >/dev/null; then
+    eval $(dircolors ~/.dircolors)
+fi
 
 pathappend() {
     for ARG in "$@"
@@ -37,7 +39,8 @@ pathappend \
     "$HOME/.poetry/bin" \
     "$HOME/.pyenv/bin" \
     "/usr/local/go/bin" \
-    "/usr/sbin"
+    "/usr/sbin" \
+    "$HOME/go/bin"
 
 if [ -d "$HOME/.pyenv/bin" ]; then
     eval "$(pyenv init -)"
@@ -48,4 +51,12 @@ fi
 
 if [ -f "$HOME/.cargo/env" ]; then
     source "$HOME/.cargo/env"
+fi
+
+if command -v thefuck 2>&1 >/dev/null; then
+    eval $(thefuck --alias)
+fi
+
+if [ -f "$HOME/.local/share/cloudflare-warp-certs/config.sh" ]; then
+    source $HOME/.local/share/cloudflare-warp-certs/config.sh
 fi
