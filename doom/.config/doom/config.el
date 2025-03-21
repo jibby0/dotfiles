@@ -74,3 +74,10 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+(doom-load-envvars-file "~/.config/doomenv")
+
+(after! ellama
+  (setq ellama-major-mode #'markdown-mode)
+  )
+

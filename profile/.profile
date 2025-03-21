@@ -56,7 +56,3 @@ fi
 if command -v thefuck 2>&1 >/dev/null; then
     eval $(thefuck --alias)
 fi
-
-if [ -f "$HOME/.local/share/cloudflare-warp-certs/config.sh" ]; then
-    source $HOME/.local/share/cloudflare-warp-certs/config.sh
-fi
