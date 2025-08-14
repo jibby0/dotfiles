@@ -51,3 +51,4 @@
 
 (package! todoist)
 (package! ellama)
+(package! bazel)
