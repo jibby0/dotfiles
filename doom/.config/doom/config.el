@@ -81,3 +81,21 @@
   (setq ellama-major-mode #'markdown-mode)
   )
 
+;; Generate an empty personal dictionary
+;; echo YXNwZWxsIGRlZmF1bHQgc3BlbGxlciByb3dsIDEuMTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE5hvAAAAAAAAAAAAAAAAAAAAAAAsAAAAIAAAAAAAAAAEAAAACAAAAAwAAAAAAAAABMAAAAAAAAAAQAAAAMAAAAHAAAABAAAAAgAAAAAAAAAAAAAACBlbgBwaG9uZXQAMS4xAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/////////////////////////////////////////////////////////////////////////////////////////////////////AAAAAAo= | base64 -d > ~/.aspell.en.pws
+(after! spell-fu
+  (spell-fu-dictionary-add (spell-fu-get-ispell-dictionary "en"))
+  (spell-fu-dictionary-add
+   (spell-fu-get-personal-dictionary "en-personal" "~/.aspell.en.pws"))
+  )
+
+
+(after! lsp-mode
+  (defun ak-lsp-ignore-semgrep-rulesRefreshed (workspace notification)
+    "Ignore semgrep/rulesRefreshed notification."
+    (when (equal (gethash "method" notification) "semgrep/rulesRefreshed")
+      (lsp--info "Ignored semgrep/rulesRefreshed notification")
+      t)) ;; Return t to indicate the notification is handled
+
+  (advice-add 'lsp--on-notification :before-until #'ak-lsp-ignore-semgrep-rulesRefreshed)
+  )
