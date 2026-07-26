@@ -3,6 +3,19 @@
 # Shared PATH discovery, history management, etc. across all machines.
 # .zshrc.local is reserved for per-machine customization.
 
+### grml ###
+
+## git
+# https://www.pedaldrivenprogramming.com/2018/09/customize-grml-zsh-config/
+
+autoload -U colors && colors
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' unstagedstr '!'
+zstyle ':vcs_info:*' stagedstr '+'
+zstyle ':vcs_info:git*' formats "%{${fg[cyan]}%}[%{${fg[blue]}%}%b%{${fg[yellow]}%}%m%u%c%{${fg[cyan]}%}]%{$reset_color%}"
+
+
 ### PATH ###
 
 pathappend() {
