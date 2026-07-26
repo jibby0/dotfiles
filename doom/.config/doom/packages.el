@@ -49,6 +49,5 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;; (unpin! t)
 
-(package! todoist)
-(package! ellama)
-(package! bazel)
+
+(setq lsp-use-plists nil)
