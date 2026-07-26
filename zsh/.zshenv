@@ -1,6 +1,9 @@
-# ~/.profile: executed by the command interpreter for login shells.
+# .zshenv
+#
+# Shared PATH discovery, history management, etc. across all machines.
+# .zshrc.local is reserved for per-machine customization.
 
-alias ls='ls --color=auto'
+### PATH ###
 
 pathappend() {
     for ARG in "$@"
@@ -30,3 +33,16 @@ if [ -d "$HOME/.bun" ]; then
     export PATH="$BUN_INSTALL/bin:$PATH"
     [ -s "/home/josh/.bun/_bun" ] && source "/home/josh/.bun/_bun"
 fi
+
+bindkey '^ ' autosuggest-accept
+
+
+### History ###
+
+export HISTFILE=~/.histfile
+
+# Ignore duplicates in history
+setopt HIST_IGNORE_DUPS
+
+# Delete old recorded entry if new entry is a duplicate.
+setopt HIST_IGNORE_ALL_DUPS
