@@ -82,7 +82,7 @@
   )
 
 ;; Generate an empty personal dictionary
-;; echo YXNwZWxsIGRlZmF1bHQgc3BlbGxlciByb3dsIDEuMTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE5hvAAAAAAAAAAAAAAAAAAAAAAAsAAAAIAAAAAAAAAAEAAAACAAAAAwAAAAAAAAABMAAAAAAAAAAQAAAAMAAAAHAAAABAAAAAgAAAAAAAAAAAAAACBlbgBwaG9uZXQAMS4xAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/////////////////////////////////////////////////////////////////////////////////////////////////////AAAAAAo= | base64 -d > ~/.aspell.en.pws
+;; echo "personal_ws-1.1 en_US 0" > ~/.aspell.en.pws
 (after! spell-fu
   (spell-fu-dictionary-add (spell-fu-get-ispell-dictionary "en"))
   (spell-fu-dictionary-add
