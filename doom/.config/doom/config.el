@@ -88,14 +88,3 @@
   (spell-fu-dictionary-add
    (spell-fu-get-personal-dictionary "en-personal" "~/.aspell.en.pws"))
   )
-
-
-(after! lsp-mode
-  (defun ak-lsp-ignore-semgrep-rulesRefreshed (workspace notification)
-    "Ignore semgrep/rulesRefreshed notification."
-    (when (equal (gethash "method" notification) "semgrep/rulesRefreshed")
-      (lsp--info "Ignored semgrep/rulesRefreshed notification")
-      t)) ;; Return t to indicate the notification is handled
-
-  (advice-add 'lsp--on-notification :before-until #'ak-lsp-ignore-semgrep-rulesRefreshed)
-  )
